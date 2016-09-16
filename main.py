@@ -3,7 +3,7 @@ import spaceship
 import bullet
 import datetime
 import random
-from enemy_class import Enemy
+from enemy import Enemy
 
 # Define some colors
 BLACK = (0, 0, 0)

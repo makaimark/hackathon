@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 
 class SpaceShip:
@@ -25,3 +26,5 @@ class SpaceShip:
 
     def getrect(self):
         return self.image.get_rect()
+
+print(sys.argv)
