@@ -101,7 +101,7 @@ while not done:
             #         bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
             #         bullet_list.append(bullet_1)
             # else:
-                shiprect = ship.event_handler(event, shiprect)
+               
 
 
 
