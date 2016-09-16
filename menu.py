@@ -1,6 +1,7 @@
 import pygame
 import main
 import time
+import sys
 
 class Option:
     hovered = False
@@ -42,15 +43,19 @@ usual_font = pygame.font.Font("font/PressStart2P.ttf", 10)
 
 
 label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
+try:
+    labe_2 = usual_font.render("User : {}".format(sys.argv[1]),1, (255,255,0) )
+except:
+    labe_2 = usual_font.render("User : None",1, (255,255,0) )
 
 options = [new_game, highscrore]
-new_game == True
 
 while True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
     events = pygame.event.get()
     screen.blit(label, (0, 10))
+    screen.blit(labe_2, (0, 290))
 
     for option in options:
         option.draw()
