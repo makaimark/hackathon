@@ -85,13 +85,13 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.JOYAXISMOTION:
-            if joysticks[event.joy].get_axis(0) >= -1:
+            if joy1.get_axis(0) < 0:
                 shiprect = ship.event_handler("left", shiprect)
-            elif joysticks[event.joy].get_axis(0) >= 1:
+            elif joy1.get_axis(0) > 0:
                 shiprect = ship.event_handler("right", shiprect)
-            elif joysticks[event.joy].get_axis(1) >= 1:
+            elif joy1.get_axis(1) > 0:
                 shiprect = ship.event_handler("down", shiprect)
-            elif joysticks[event.joy].get_axis(1) >= -1:
+            elif joy1.get_axis(1) < 0:
                 shiprect = ship.event_handler("up", shiprect)
             # if event.key == pygame.K_SPACE:
             #     delta_time = datetime.datetime.now() - last_shot
