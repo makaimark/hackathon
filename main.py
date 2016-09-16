@@ -24,7 +24,7 @@ ship = spaceship.SpaceShip()
 
 shiprect = ship.getrect()
 pygame.key.set_repeat(1, 40)
-bullet_1 = False
+bullet_list = []
 
 # -------- Main Program Loop -----------
 while not done:
@@ -49,7 +49,8 @@ while not done:
     for bull in bullet_list:
         if bull.x_coordinate > 1260:
             bullet_list.remove(bull)
-        bulletrect = (bull.x_coordinate, bull.y_coordinate - 5)
+            continue
+        bulletrect = (bull.x_coordinate, bull.y_coordinate-5)
         bull.bullet_mover()
         screen.blit(bull.image, bulletrect)
 
