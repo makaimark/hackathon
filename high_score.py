@@ -15,6 +15,7 @@ class Highscore():
     def print_score_to_csv(cls, file_name):
         with open(file_name, "a") as file:
             row = "Name : {} - Score: {} - {}".format(cls.name, cls.score, cls.date)
+            row.replace(" ", ",")
             file.write(row + "\n")
 
     @staticmethod

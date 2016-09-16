@@ -25,8 +25,6 @@ def number_of_lifes(screen, ship):
         return life
 
 def main(username):
-
-
     # Define some colors
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -37,6 +35,7 @@ def main(username):
 
     # Set the width and height of the screen [width, height]
     size = (1280, 1024)
+    highscore = 0
 
     screen = pygame.display.set_mode(size)
     enemy_list = pygame.sprite.Group()
@@ -60,7 +59,7 @@ def main(username):
     for joy in joysticks:
         joy.init()
     joy1 = joysticks[0]
-    joy2 = joysticks[1]
+    # joy2 = joysticks[1]
 
     buttons = joy1.get_numbuttons()
     print(buttons)
@@ -72,7 +71,7 @@ def main(username):
 
     def spawn_enemy(default):
         for i in range(default):
-            enemy = Enemy(WHITE, 20, 15)
+            enemy = Enemy()
             enemy.rect.x = random.randrange(1000,size[0])
             enemy.rect.y = random.randrange(50 , size[1] -50)
             enemy_list.add(enemy)
@@ -139,6 +138,7 @@ def main(username):
                 if enemy.rect.colliderect((bull.x_coordinate, bull.y_coordinate, 30, 10)):
                     bullet_list.remove(bull)
                     enemy_list.remove(enemy)
+                    highscore += 1
                     continue
 
         if len(enemy_list) <= 5:
