@@ -5,7 +5,6 @@
 #
 # You should see a window with three grey menu options on it.  Place the mouse
 # cursor over a menu option and it will become white.
-
 import pygame
 
 
@@ -38,35 +37,33 @@ class Option:
 
 
 pygame.init()
-screen = pygame.display.set_mode((480, 320))
-menu_font = pygame.font.Font(None, 40)
-options = [Option("NEW GAME", (140, 105)), Option("LOAD GAME", (135, 155)),
-           Option("OPTIONS", (145, 205))]
+screen = pygame.display.set_mode((600, 300))
+menu_font = pygame.font.Font("font/PressStart2P.ttf", 40)
+pygame.font.init()
+
+new_game = Option("NEW GAME", (140, 105))
+highscrore = Option("HIGHSCORE", (135, 155))
+options = [new_game, highscrore]
+
 while True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
-    actual = 0
     events = pygame.event.get()
 
     for option in options:
         option.draw()
 
     for event in events:
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                actual -= 1
-                if actual != -1:
-                    if actual == -1:
-                        actual = 2
-                        options[actual - 1].hovered = False
-                        options[actual].hovered = True
 
-            # if event.key == pygame.K_DOWN:
-            #     actual += 1
-            #     if actual != 3 or actual != -1:
-            #         options[actual].hovered = True
-            #         options[actual - 1].hovered = False
-            #     else:
-            #         actual = 0
-            #         options[actual].hovered = True
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                if new_game.hovered == True and highscrore.hovered == False:
+                    new_game.hovered = False
+                    highscrore.hovered = True
+                elif highscrore.hovered == True and new_game.hovered == False:
+                    highscrore.hovered = False
+                    new_game.hovered = True
+                elif new_game.hovered == False and highscrore.hovered == False:
+                    new_game.hovered = True
+
     pygame.display.update()
