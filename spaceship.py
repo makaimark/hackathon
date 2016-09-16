@@ -3,17 +3,25 @@ import pygame
 
 class SpaceShip:
     life = 3
-    image = pygame.image.load("spaceship.jpg")
+    image = pygame.image.load("spaceship.bmp")
 
     def event_handler(self, event, shiprect):
         if event.key == pygame.K_LEFT:
-            return shiprect.move([-5, 0])
+            if shiprect.left > 0:
+                return shiprect.move([-15, 0])
+            return shiprect
         elif event.key == pygame.K_RIGHT:
-            return shiprect.move([5, 0])
+            if shiprect.right < 1260:
+                return shiprect.move([15, 0])
+            return shiprect
         elif event.key == pygame.K_UP:
-            return shiprect.move([0, -5])
+            if shiprect.top > 0:
+                return shiprect.move([0, -15])
+            return shiprect
         elif event.key == pygame.K_DOWN:
-            return shiprect.move([0, 5])
+            if shiprect.bottom < 1000:
+                return shiprect.move([0, 15])
+            return shiprect
 
     def getrect(self):
         return self.image.get_rect()

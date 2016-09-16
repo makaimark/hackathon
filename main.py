@@ -9,7 +9,7 @@ RED = (255, 0, 0)
 pygame.init()
 
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+size = (1280, 1024)
 screen = pygame.display.set_mode(size)
 
 # Loop until the user clicks the close button.
@@ -21,7 +21,7 @@ clock = pygame.time.Clock()
 ship = spaceship.SpaceShip()
 
 shiprect = ship.getrect()
-pygame.key.set_repeat(1, 50)
+pygame.key.set_repeat(1, 40)
 
 # -------- Main Program Loop -----------
 while not done:
@@ -35,7 +35,7 @@ while not done:
 
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    screen.fill(WHITE)
+    screen.fill(BLACK)
 
     screen.blit(ship.image, shiprect)
     # --- Go ahead and update the screen with what we've drawn.
