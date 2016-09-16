@@ -74,6 +74,10 @@ while not done:
         bull.bullet_mover()
         screen.blit(bull.image, bulletrect)
 
+    for enemy in enemy_list:
+        if enemy.rect.colliderect(shiprect):
+            done = True
+
 
 
     # --- Go ahead and update the screen with what we've drawn.
