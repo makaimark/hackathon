@@ -24,8 +24,8 @@ class Enemy(pygame.sprite.Sprite):
         """ Reset position to the top of the screen, at a random x location.
         Called by update() or the main program loop if there is a collision.
         """
-        self.rect.x = 820
-        self.rect.y = random.randrange(0, 500)
+        self.rect.x = random.randrange(1000, 1260)
+        self.rect.y = random.randrange(50, 950)
 
     def update(self):
         """ Called each frame. """
