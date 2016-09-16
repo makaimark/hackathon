@@ -1,12 +1,6 @@
-# Highlight-able menu in Pygame
-#
-# To run, use:
-#     python pygame-menu-mouseover.py
-#
-# You should see a window with three grey menu options on it.  Place the mouse
-# cursor over a menu option and it will become white.
 import pygame
-
+from main import main
+import time
 
 class Option:
     hovered = False
@@ -39,16 +33,23 @@ class Option:
 pygame.init()
 screen = pygame.display.set_mode((600, 300))
 menu_font = pygame.font.Font("font/PressStart2P.ttf", 40)
+string_font = pygame.font.Font(None, 10)
 pygame.font.init()
 
 new_game = Option("NEW GAME", (140, 105))
 highscrore = Option("HIGHSCORE", (135, 155))
+usual_font = pygame.font.Font("font/PressStart2P.ttf", 10)
+
+
+label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
+
 options = [new_game, highscrore]
 
 while True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
     events = pygame.event.get()
+    screen.blit(label, (0, 10))
 
     for option in options:
         option.draw()
@@ -60,10 +61,20 @@ while True:
                 if new_game.hovered == True and highscrore.hovered == False:
                     new_game.hovered = False
                     highscrore.hovered = True
+                    time.sleep(0.2)
                 elif highscrore.hovered == True and new_game.hovered == False:
                     highscrore.hovered = False
                     new_game.hovered = True
+                    time.sleep(0.2)
                 elif new_game.hovered == False and highscrore.hovered == False:
                     new_game.hovered = True
+                    time.sleep(0.2)
+            elif event.key == pygame.K_SPACE:
+                if new_game.hovered == True:
+                    main()
+                if highscrore.hovered == True:
+                    pass
+            elif event.key == pygame.K_ESCAPE:
+                    exit()
 
     pygame.display.update()

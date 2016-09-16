@@ -2,7 +2,6 @@ import pygame
 import spaceship
 import bullet
 import datetime
-import enemy_class
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -31,44 +30,48 @@ delay = 250000
 last_shot = datetime.datetime.now()
 
 # -------- Main Program Loop -----------
-while not done:
-    # --- Main event loop
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                delta_time = datetime.datetime.now() - last_shot
-                if delta_time.microseconds > delay:
-                    last_shot = datetime.datetime.now()
-                    bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
-                    bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
-                    bullet_list.append(bullet_1)
-            else:
-                shiprect = ship.event_handler(event, shiprect)
+def main():
+    while not done:
+        # --- Main event loop
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    delta_time = datetime.datetime.now() - last_shot
+                    if delta_time.microseconds > delay:
+                        last_shot = datetime.datetime.now()
+                        bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
+                        bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
+                        bullet_list.append(bullet_1)
+                else:
+                    shiprect = ship.event_handler(event, shiprect)
 
 
 
-    # If you want a background image, replace this clear with blit'ing the
-    # background image.
-    screen.fill(BLACK)
+        # If you want a background image, replace this clear with blit'ing the
+        # background image.
+        screen.fill(BLACK)
 
-    screen.blit(ship.image, shiprect)
-    for bull in bullet_list:
-        if bull.x_coordinate > 1260:
-            bullet_list.remove(bull)
-            continue
-        bulletrect = (bull.x_coordinate, bull.y_coordinate-5)
-        bull.bullet_mover()
-        screen.blit(bull.image, bulletrect)
+        screen.blit(ship.image, shiprect)
+        for bull in bullet_list:
+            if bull.x_coordinate > 1260:
+                bullet_list.remove(bull)
+                continue
+            bulletrect = (bull.x_coordinate, bull.y_coordinate-5)
+            bull.bullet_mover()
+            screen.blit(bull.image, bulletrect)
 
 
 
-    # --- Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+        # --- Go ahead and update the screen with what we've drawn.
+        pygame.display.flip()
 
-    # --- Limit to 60 frames per second
-    clock.tick(60)
+        # --- Limit to 60 frames per second
+        clock.tick(60)
 
-# Close the window and quit.
-pygame.quit()
+    # Close the window and quit.
+    pygame.quit()
+
+if __name__ == '__main__':
+    main()
