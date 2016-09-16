@@ -9,7 +9,7 @@ class Bullet:
         self.y_coordinate = y_coordinate
 
     def bullet_mover(self):
-        self.x_coordinate += 50
+        self.x_coordinate += 10
 
     def getrect(self):
         return self.image.get_rect()
