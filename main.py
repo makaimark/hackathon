@@ -34,6 +34,9 @@ bullet_list = []
 delay = 250000
 last_shot = datetime.datetime.now()
 pygame.joystick.init()
+joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+for joy in joysticks:
+    joy.init()
 
 
 def spawn_enemy(default):
@@ -44,10 +47,9 @@ def spawn_enemy(default):
         enemy_list.add(enemy)
 
 
-if pygame.joystick.get_count() > 0:
-    my_joystick = pygame.joystick.Joystick(0)
-else:
-    print("No joystick found.")
+for joy in joysticks:
+    if joy.get_init() == True:
+        print("Initialized")
 # -------- Main Program Loop ----------
 
 while not done:
@@ -57,15 +59,23 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-        elif event.type == pygame.KEYDOWN or event.type == pygame.JOYAXISMOTION:
-            if event.key == pygame.K_SPACE:
-                delta_time = datetime.datetime.now() - last_shot
-                if delta_time.microseconds > delay:
-                    last_shot = datetime.datetime.now()
-                    bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
-                    bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
-                    bullet_list.append(bullet_1)
-            else:
+        elif event.type == pygame.JOYAXISMOTION:
+            if joy.get_axis(0) == -1:
+                shiprect = ship.event_handler("left", shiprect)
+            elif joy.get_axis(0) == 1:
+                shiprect = ship.event_handler("right", shiprect)
+            elif joy.get_axis(1) == 1:
+                shiprect = ship.event_handler("down", shiprect)
+            elif joy.get_axis(1) == -1:
+                shiprect = ship.event_handler("up", shiprect)
+            # if event.key == pygame.K_SPACE:
+            #     delta_time = datetime.datetime.now() - last_shot
+            #     if delta_time.microseconds > delay:
+            #         last_shot = datetime.datetime.now()
+            #         bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
+            #         bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
+            #         bullet_list.append(bullet_1)
+            # else:
                 shiprect = ship.event_handler(event, shiprect)
 
 
