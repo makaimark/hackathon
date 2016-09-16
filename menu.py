@@ -1,5 +1,5 @@
 import pygame
-from main import main
+import main
 import time
 
 class Option:

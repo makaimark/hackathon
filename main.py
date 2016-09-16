@@ -5,6 +5,28 @@ import datetime
 import random
 from enemy import Enemy
 
+
+def number_of_lifes(screen, ship):
+    if ship.life == 3:
+        life = pygame.image.load("3.png")
+        life = pygame.transform.scale(life, (50, 50))
+        return life
+    elif ship.life == 2:
+        life = pygame.image.load("2.png")
+        life = pygame.transform.scale(life, (50, 50))
+        return life
+    elif ship.life == 1:
+        life = pygame.image.load("1.png")
+        life = pygame.transform.scale(life, (50, 50))
+        return life
+    elif ship.life == 0:
+        life = pygame.image.load("gameover.jpg")
+        life = pygame.transform.scale(life, (500, 500))
+        return life
+
+
+
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -54,8 +76,9 @@ for joy in joysticks:
         print("Initialized")
 # -------- Main Program Loop ----------
 
-while not done:
+number_of_lifes(screen, ship)
 
+while not done:
     level = 2
     # --- Main event loop
     for event in pygame.event.get():
@@ -89,6 +112,7 @@ while not done:
     enemy_list.draw(screen)
 
     screen.blit(ship.image, shiprect)
+    screen.blit(number_of_lifes(screen, ship), (0,0))
     for bull in bullet_list:
         if bull.x_coordinate > 1260:
             bullet_list.remove(bull)
@@ -99,7 +123,8 @@ while not done:
 
     for enemy in enemy_list:
         if enemy.rect.colliderect(shiprect):
-            done = True
+            ship.life -= 1
+            enemy_list.remove(enemy)
 
     for enemy in enemy_list:
         for bull in bullet_list:
