@@ -33,6 +33,7 @@ while not done:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 bullet_1 = bullet.Bullet(shiprect.right, (shiprect.top + shiprect.bottom)/2)
+                bulletrect = bullet_1.getrect()
                 bullet_1.bullet_mover()
             else:
                 shiprect = ship.event_handler(event, shiprect)
@@ -43,6 +44,8 @@ while not done:
     screen.fill(BLACK)
 
     screen.blit(ship.image, shiprect)
+    screen.blit(bullet_1.image, bulletrect)
+
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
