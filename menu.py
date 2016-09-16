@@ -44,8 +44,9 @@ usual_font = pygame.font.Font("font/PressStart2P.ttf", 10)
 label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
 
 options = [new_game, highscrore]
+new_game == True
 
-while True:
+while new_game == True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
     events = pygame.event.get()
