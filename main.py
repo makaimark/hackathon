@@ -62,6 +62,13 @@ for joy in joysticks:
 joy1 = joysticks[0]
 joy2 = joysticks[1]
 
+buttons = joy1.get_numbuttons()
+print(buttons)
+joy_buttons = []
+for i in range(buttons):
+    joy_buttons.append(joy1.get_button(i))
+print (joy_buttons)
+
 
 def spawn_enemy(default):
     for i in range(default):
@@ -93,15 +100,16 @@ while not done:
                 shiprect = ship.event_handler("down", shiprect)
             elif joy1.get_axis(1) < 0:
                 shiprect = ship.event_handler("up", shiprect)
-            # if event.key == pygame.K_SPACE:
-            #     delta_time = datetime.datetime.now() - last_shot
-            #     if delta_time.microseconds > delay:
-            #         last_shot = datetime.datetime.now()
-            #         bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
-            #         bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
-            #         bullet_list.append(bullet_1)
-            # else:
-               
+        if event.type == pygame.JOYBUTTONDOWN:
+            if joy1.get_button(0) == 1:
+                delta_time = datetime.datetime.now() - last_shot
+                if delta_time.microseconds > delay:
+                    last_shot = datetime.datetime.now()
+                    bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
+                    bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
+                    bullet_list.append(bullet_1)
+
+
 
 
 
