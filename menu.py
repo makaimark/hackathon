@@ -46,7 +46,7 @@ label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
 options = [new_game, highscrore]
 new_game == True
 
-while new_game == True:
+while True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
     events = pygame.event.get()
@@ -72,7 +72,7 @@ while new_game == True:
                     time.sleep(0.2)
             elif event.key == pygame.K_SPACE:
                 if new_game.hovered == True:
-                    main()
+                   main.main()
                 if highscrore.hovered == True:
                     pass
             elif event.key == pygame.K_ESCAPE:
