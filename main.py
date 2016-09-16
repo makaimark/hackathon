@@ -24,7 +24,7 @@ def number_of_lifes(screen, ship):
         life = pygame.transform.scale(life, (500, 500))
         return life
 
-def main():
+def main(username):
 
 
     # Define some colors
