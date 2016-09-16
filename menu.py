@@ -1,4 +1,5 @@
 import pygame
+import main
 import time
 import sys
 
@@ -76,7 +77,7 @@ while True:
                     time.sleep(0.2)
             elif event.key == pygame.K_SPACE:
                 if new_game.hovered == True:
-                    pass
+                   main.main()
                 if highscrore.hovered == True:
                     pass
             elif event.key == pygame.K_ESCAPE:
