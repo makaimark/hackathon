@@ -21,6 +21,7 @@ clock = pygame.time.Clock()
 speed = [2, 2]
 ball = pygame.image.load("spaceship.bmp")
 ballrect = ball.get_rect()
+pygame.key.set_repeat(1, 50)
 
 # -------- Main Program Loop -----------
 while not done:
