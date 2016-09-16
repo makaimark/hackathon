@@ -2,6 +2,7 @@ import pygame
 import main
 import time
 import sys
+import name_input
 
 class Option:
     hovered = False
@@ -77,7 +78,7 @@ while True:
                     time.sleep(0.2)
             elif event.key == pygame.K_SPACE:
                 if new_game.hovered == True:
-                   main.main()
+                   name_input.name_input()
                 if highscrore.hovered == True:
                     pass
             elif event.key == pygame.K_ESCAPE:

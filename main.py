@@ -24,7 +24,6 @@ def number_of_lifes(screen, ship):
         life = pygame.transform.scale(life, (500, 500))
         return life
 
-
 def main():
     pygame.mixer.init()
     sound = pygame.mixer.music.load('sound.wav')
