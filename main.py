@@ -32,21 +32,30 @@ pygame.key.set_repeat(1, 40)
 bullet_list = []
 delay = 250000
 last_shot = datetime.datetime.now()
-
-for i in range(10):
-    enemy = Enemy(WHITE, 20, 15)
-    enemy.rect.x = random.randrange(size[0])
-    enemy.rect.y = random.randrange(size[1])
-    enemy_list.add(enemy)
+pygame.joystick.init()
 
 
+def spawn_enemy(default):
+    for i in range(default):
+        enemy = Enemy(WHITE, 20, 15)
+        enemy.rect.x = random.randrange(1000,size[0])
+        enemy.rect.y = random.randrange(50 , size[1] -50)
+        enemy_list.add(enemy)
+
+
+if pygame.joystick.get_count() > 0:
+    my_joystick = pygame.joystick.Joystick(0)
+else:
+    print("No joystick found.")
 # -------- Main Program Loop -----------
 while not done:
+
+    level = 2
     # --- Main event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-        elif event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN or event.type == pygame.JOYAXISMOTION:
             if event.key == pygame.K_SPACE:
                 delta_time = datetime.datetime.now() - last_shot
                 if delta_time.microseconds > delay:
@@ -77,6 +86,17 @@ while not done:
     for enemy in enemy_list:
         if enemy.rect.colliderect(shiprect):
             done = True
+
+    for enemy in enemy_list:
+        for bull in bullet_list:
+            if enemy.rect.colliderect((bull.x_coordinate, bull.y_coordinate, 30, 10)):
+                bullet_list.remove(bull)
+                enemy_list.remove(enemy)
+                continue
+
+    if len(enemy_list) <= 5:
+        spawn_enemy(level*5)
+        level += 1
 
 
 

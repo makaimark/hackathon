@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 class Enemy(pygame.sprite.Sprite):
 
     def __init__(self, color, width, height):
@@ -19,13 +20,12 @@ class Enemy(pygame.sprite.Sprite):
         # of rect.x and rect.y
         self.rect = self.image.get_rect()
 
-
     def reset_pos(self):
         """ Reset position to the top of the screen, at a random x location.
         Called by update() or the main program loop if there is a collision.
         """
-        self.rect.x = 1260
-        self.rect.y = random.randrange(0, 1000)
+        self.rect.x = random.randrange(1000,1260)
+        self.rect.y = random.randrange(50, 950)
 
     def update(self):
         """ Called each frame. """
