@@ -24,8 +24,8 @@ def number_of_lifes(screen, ship):
         life = pygame.transform.scale(life, (500, 500))
         return life
 
-def main():
 
+def main():
 
     # Define some colors
     BLACK = (0, 0, 0)
@@ -37,6 +37,7 @@ def main():
 
     # Set the width and height of the screen [width, height]
     size = (1280, 1024)
+    highscore = 0
 
     screen = pygame.display.set_mode(size)
     enemy_list = pygame.sprite.Group()
@@ -60,7 +61,7 @@ def main():
     for joy in joysticks:
         joy.init()
     joy1 = joysticks[0]
-    joy2 = joysticks[1]
+    # joy2 = joysticks[1]
 
     buttons = joy1.get_numbuttons()
     print(buttons)
@@ -72,7 +73,7 @@ def main():
 
     def spawn_enemy(default):
         for i in range(default):
-            enemy = Enemy(WHITE, 20, 15)
+            enemy = Enemy()
             enemy.rect.x = random.randrange(1000,size[0])
             enemy.rect.y = random.randrange(50 , size[1] -50)
             enemy_list.add(enemy)
@@ -84,6 +85,10 @@ def main():
     # -------- Main Program Loop ----------
 
     number_of_lifes(screen, ship)
+    background_image = pygame.image.load("spaceimpact.png")
+    background_image = pygame.transform.scale(background_image, (1280, 1024))
+    screen.blit(background_image, (0,0))
+
 
     while not done:
         level = 2
@@ -115,7 +120,8 @@ def main():
 
         # If you want a background image, replace this clear with blit'ing the
         # background image.
-        screen.fill(BLACK)
+        # screen.fill(BLACK)
+        screen.blit(background_image, (0, 0))
         enemy_list.update()
         enemy_list.draw(screen)
 
@@ -139,6 +145,7 @@ def main():
                 if enemy.rect.colliderect((bull.x_coordinate, bull.y_coordinate, 30, 10)):
                     bullet_list.remove(bull)
                     enemy_list.remove(enemy)
+                    highscore += 1
                     continue
 
         if len(enemy_list) <= 5:
