@@ -8,6 +8,10 @@ WHITE = (255, 255, 255)
 
 pygame.init()
 
+joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+for joy in joysticks:
+    joy.init()
+joy1 = joysticks[0]
 # Set the width and height of the screen [width, height]
 size = (700, 500)
 screen = pygame.display.set_mode(size)
@@ -34,7 +38,7 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-        elif event.type == JOYAXISMOTION:
+        elif event.type == pygame.JOYAXISMOTION:
             if joy1.get_axis(1) < 0:
                 if n != 19:
                     n += 1
@@ -46,18 +50,16 @@ while not done:
                     screen.fill(WHITE)
                     label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
                     screen.blit(label, (100, 100))
-        if joy1.get_axis(1) > 0:
-            if keys[K_DOWN]:
-                if n != -1:
-                    n -= 1
-                    screen.fill(WHITE)
-                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                    screen.blit(label, (100, 100))
-                else:
-                    n =19
-                    screen.fill(WHITE)
-                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                    screen.blit(label, (100, 100))
+            if n != -1:
+                n -= 1
+                screen.fill(WHITE)
+                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                screen.blit(label, (100, 100))
+            else:
+                n =19
+                screen.fill(WHITE)
+                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                screen.blit(label, (100, 100))
         elif keys[K_SPACE]:
             username.append(list[n])
         elif keys[K_a]:
