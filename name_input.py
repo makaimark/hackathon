@@ -40,7 +40,7 @@ while not done:
             done = True
         elif event.type == pygame.JOYAXISMOTION:
             if joy1.get_axis(1) < 0:
-                time.timeout(1)
+                time.sleep(1)
                 if n != 19:
                     n += 1
                     screen.fill(WHITE)
@@ -52,7 +52,7 @@ while not done:
                     label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
                     screen.blit(label, (100, 100))
             elif joy1.get_axis(1) > 0:
-                time.timeout(1)
+                time.sleep(1)
                 if n != -1:
                     n -= 1
                     screen.fill(WHITE)
