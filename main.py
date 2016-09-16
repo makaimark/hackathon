@@ -2,35 +2,38 @@ import pygame
 import spaceship
 import bullet
 import datetime
-# Define some colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
 
-pygame.init()
-
-# Set the width and height of the screen [width, height]
-size = (1280, 1024)
-screen = pygame.display.set_mode(size)
-
-# Loop until the user clicks the close button.
-done = False
-
-
-# Used to manage how fast the screen updates
-clock = pygame.time.Clock()
-
-ship = spaceship.SpaceShip()
-
-shiprect = ship.getrect()
-pygame.key.set_repeat(1, 40)
-bullet_list = []
-delay = 250000
-last_shot = datetime.datetime.now()
-
-# -------- Main Program Loop -----------
 def main():
+
+    # Define some colors
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+
+    pygame.init()
+
+    # Set the width and height of the screen [width, height]
+    size = (1280, 1024)
+    screen = pygame.display.set_mode(size)
+    bg = pygame.image.load("pictuers/spaceimpact.png")
+    # Loop until the user clicks the close button.
+    done = False
+
+
+    # Used to manage how fast the screen updates
+    clock = pygame.time.Clock()
+
+    ship = spaceship.SpaceShip()
+
+    shiprect = ship.getrect()
+    pygame.key.set_repeat(1, 40)
+    bullet_list = []
+    delay = 250000
+    last_shot = datetime.datetime.now()
+
+    # -------- Main Program Loop -----------
+
     while not done:
         # --- Main event loop
         for event in pygame.event.get():
@@ -51,8 +54,7 @@ def main():
 
         # If you want a background image, replace this clear with blit'ing the
         # background image.
-        screen.fill(BLACK)
-
+        screen.blit(bg, (0, 0))
         screen.blit(ship.image, shiprect)
         for bull in bullet_list:
             if bull.x_coordinate > 1260:
