@@ -10,7 +10,7 @@ class Highscore():
 
     def generate_date(self):
         now = datetime.datetime.now()
-        self.date = "Date: {}-{}-{}".format(now.year, now.month, now.day)
+        self.date = "Date: {}-{}-{}".format(now.year, now.month, now.day, now.hour, now.min)
 
     def print_score_to_csv(cls, file_name):
         with open(file_name, "a") as file:
