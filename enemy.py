@@ -12,7 +12,7 @@ class Enemy(pygame.sprite.Sprite):
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
         self.image = pygame.image.load("invader.jpg")
-        self.image = pygame.transform.scale(self.image, (50, 50))
+        self.image = pygame.transform.scale(self.image, (100, 100))
 
         # Update the position of this object by setting the values
         # of rect.x and rect.y

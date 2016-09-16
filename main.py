@@ -26,6 +26,9 @@ def number_of_lifes(screen, ship):
 
 
 def main():
+    pygame.mixer.init()
+    sound = pygame.mixer.music.load('sound.wav')
+    pygame.mixer.music.play(-1)
 
     # Define some colors
     BLACK = (0, 0, 0)
