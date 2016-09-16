@@ -38,7 +38,7 @@ joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_coun
 for joy in joysticks:
     joy.init()
 joy1 = joysticks[0]
-joy2 = joysticks[2]
+joy2 = joysticks[1]
 
 
 def spawn_enemy(default):
@@ -62,13 +62,13 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.JOYAXISMOTION:
-            if joy1.get_axis(0) == -1:
+            if joysticks[event.joy].get_axis(0) == -1:
                 shiprect = ship.event_handler("left", shiprect)
-            elif joy1.get_axis(0) == 1:
+            elif joysticks[event.joy].get_axis(0) == 1:
                 shiprect = ship.event_handler("right", shiprect)
-            elif joy1.get_axis(1) == 1:
+            elif joysticks[event.joy].get_axis(1) == 1:
                 shiprect = ship.event_handler("down", shiprect)
-            elif joy1.get_axis(1) == -1:
+            elif joysticks[event.joy].get_axis(1) == -1:
                 shiprect = ship.event_handler("up", shiprect)
             # if event.key == pygame.K_SPACE:
             #     delta_time = datetime.datetime.now() - last_shot
