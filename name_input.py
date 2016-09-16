@@ -50,17 +50,16 @@ while not done:
                     label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
                     screen.blit(label, (100, 100))
         if joy1.get_axis(1) > 0:
-            if keys[K_DOWN]:
-                if n != -1:
-                    n -= 1
-                    screen.fill(WHITE)
-                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                    screen.blit(label, (100, 100))
-                else:
-                    n =19
-                    screen.fill(WHITE)
-                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                    screen.blit(label, (100, 100))
+            if n != -1:
+                n -= 1
+                screen.fill(WHITE)
+                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                screen.blit(label, (100, 100))
+            else:
+                n =19
+                screen.fill(WHITE)
+                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                screen.blit(label, (100, 100))
         elif keys[K_SPACE]:
             username.append(list[n])
         elif keys[K_a]:
