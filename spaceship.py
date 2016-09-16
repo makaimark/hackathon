@@ -8,19 +8,19 @@ class SpaceShip:
     def event_handler(self, event, shiprect):
         if event == "left":
             if shiprect.left > 0:
-                return shiprect.move([-15, 0])
+                return shiprect.move([-8, 0])
             return shiprect
         elif event == "right":
             if shiprect.right < 1260:
-                return shiprect.move([15, 0])
+                return shiprect.move([8, 0])
             return shiprect
         elif event == "up":
             if shiprect.top > 0:
-                return shiprect.move([0, -15])
+                return shiprect.move([0, -8])
             return shiprect
         elif event == "down":
-            if shiprect.bottom < 1000:
-                return shiprect.move([0, 15])
+            if shiprect.bottom < 950:
+                return shiprect.move([0, 8])
             return shiprect
 
     def getrect(self):
