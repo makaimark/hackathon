@@ -2,7 +2,8 @@ import pygame
 import spaceship
 import bullet
 import datetime
-import enemy_class
+import random
+from enemy_class import Enemy
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -13,7 +14,9 @@ pygame.init()
 
 # Set the width and height of the screen [width, height]
 size = (1280, 1024)
+
 screen = pygame.display.set_mode(size)
+enemy_list = pygame.sprite.Group()
 
 # Loop until the user clicks the close button.
 done = False
@@ -29,6 +32,13 @@ pygame.key.set_repeat(1, 40)
 bullet_list = []
 delay = 250000
 last_shot = datetime.datetime.now()
+
+for i in range(10):
+    enemy = Enemy(WHITE, 20, 15)
+    enemy.rect.x = random.randrange(size[0])
+    enemy.rect.y = random.randrange(size[1])
+    enemy_list.add(enemy)
+
 
 # -------- Main Program Loop -----------
 while not done:
@@ -52,6 +62,8 @@ while not done:
     # If you want a background image, replace this clear with blit'ing the
     # background image.
     screen.fill(BLACK)
+    enemy_list.update()
+    enemy_list.draw(screen)
 
     screen.blit(ship.image, shiprect)
     for bull in bullet_list:
