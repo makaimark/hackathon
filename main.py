@@ -85,10 +85,6 @@ def main():
     # -------- Main Program Loop ----------
 
     number_of_lifes(screen, ship)
-    background_image = pygame.image.load("spaceimpact.png")
-    background_image = pygame.transform.scale(background_image, (1280, 1024))
-    screen.blit(background_image, (0,0))
-
 
     while not done:
         level = 2
@@ -120,8 +116,7 @@ def main():
 
         # If you want a background image, replace this clear with blit'ing the
         # background image.
-        # screen.fill(BLACK)
-        screen.blit(background_image, (0, 0))
+        screen.fill(BLACK)
         enemy_list.update()
         enemy_list.draw(screen)
 
