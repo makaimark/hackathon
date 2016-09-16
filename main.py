@@ -23,6 +23,7 @@ ship = spaceship.SpaceShip()
 
 shiprect = ship.getrect()
 pygame.key.set_repeat(1, 40)
+bullet_1 = False
 
 # -------- Main Program Loop -----------
 while not done:
@@ -32,9 +33,9 @@ while not done:
             done = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bullet_1 = bullet.Bullet(shiprect.right, (shiprect.top + shiprect.bottom)/2)
-                bulletrect = bullet_1.getrect()
-                bullet_1.bullet_mover()
+                bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
+                bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate)
+                print(bulletrect)
             else:
                 shiprect = ship.event_handler(event, shiprect)
 
@@ -44,7 +45,10 @@ while not done:
     screen.fill(BLACK)
 
     screen.blit(ship.image, shiprect)
-    screen.blit(bullet_1.image, bulletrect)
+    if bullet_1:
+        bullet_1.bullet_mover()
+        screen.blit(bullet_1.image, bulletrect)
+
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
