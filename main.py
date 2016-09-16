@@ -1,58 +1,50 @@
-"""
- Simple graphics demo
-
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
-
-"""
-
-# Import a library of functions called 'pygame'
 import pygame
-
-# Initialize the game engine
-pygame.init()
 
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
-# Set the height and width of the screen
-size = (400, 500)
+pygame.init()
+
+# Set the width and height of the screen [width, height]
+size = (700, 500)
 screen = pygame.display.set_mode(size)
 
-# Loop as long as done == False
-while True:
+pygame.display.set_caption("My Game")
 
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
+# Loop until the user clicks the close button.
+done = False
 
-    # All drawing code happens after the for loop and but
-    # inside the main while not done loop.
+# Used to manage how fast the screen updates
+clock = pygame.time.Clock()
 
-    # Clear the screen and set the screen background
+# -------- Main Program Loop -----------
+while not done:
+    # --- Main event loop
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+
+    # --- Game logic should go here
+
+    # --- Screen-clearing code goes here
+
+    # Here, we clear the screen to white. Don't put other drawing commands
+    # above this, or they will be erased with this command.
+
+    # If you want a background image, replace this clear with blit'ing the
+    # background image.
     screen.fill(WHITE)
 
+    # --- Drawing code should go here
 
-    # Select the font to use, size, bold, italics
-    font = pygame.font.SysFont('Calibri', 25, True, False)
-
-    # Render the text. "True" means anti-aliased text.
-    # Black is the color. This creates an image of the
-    # letters, but does not put it on the screen
-    text = font.render("My text", True, BLACK)
-
-    # Put the image of the text on the screen at 250x250
-    screen.blit(text, [250, 250])
-
-    # Go ahead and update the screen with what we've drawn.
-    # This MUST happen after all the other drawing commands.
+    # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-# Be IDLE friendly
+    # --- Limit to 60 frames per second
+    clock.tick(60)
+
+# Close the window and quit.
 pygame.quit()
