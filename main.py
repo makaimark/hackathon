@@ -1,6 +1,7 @@
 import pygame
 import spaceship
 import bullet
+import datetime
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -25,6 +26,8 @@ ship = spaceship.SpaceShip()
 shiprect = ship.getrect()
 pygame.key.set_repeat(1, 40)
 bullet_list = []
+delay = 250000
+last_shot = datetime.datetime.now()
 
 # -------- Main Program Loop -----------
 while not done:
@@ -34,11 +37,15 @@ while not done:
             done = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
-                bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
-                bullet_list.append(bullet_1)
+                delta_time = datetime.datetime.now() - last_shot
+                if delta_time.microseconds > delay:
+                    last_shot = datetime.datetime.now()
+                    bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
+                    bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
+                    bullet_list.append(bullet_1)
             else:
                 shiprect = ship.event_handler(event, shiprect)
+
 
 
     # If you want a background image, replace this clear with blit'ing the

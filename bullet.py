@@ -8,6 +8,7 @@ class Bullet:
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
 
+
     def bullet_mover(self):
         self.x_coordinate += 10
 
