@@ -1,5 +1,6 @@
 import pygame
 import spaceship
+import bullet
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -30,7 +31,11 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.KEYDOWN:
-            shiprect = ship.event_handler(event, shiprect)
+            if event.key == pygame.K_SPACE:
+                bullet_1 = bullet.Bullet(shiprect.right, (shiprect.top + shiprect.bottom)/2)
+                bullet_1.bullet_mover()
+            else:
+                shiprect = ship.event_handler(event, shiprect)
 
 
     # If you want a background image, replace this clear with blit'ing the
