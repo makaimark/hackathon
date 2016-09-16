@@ -2,6 +2,7 @@ import pygame
 import spaceship
 import bullet
 import datetime
+import enemy_class
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -16,7 +17,7 @@ screen = pygame.display.set_mode(size)
 
 # Loop until the user clicks the close button.
 done = False
-bullet_list = []
+
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
