@@ -48,7 +48,7 @@ if pygame.joystick.get_count() > 0:
     my_joystick = pygame.joystick.Joystick(0)
 else:
     print("No joystick found.")
-# -------- Main Program Loop -----------
+# -------- Main Program Loop ----------
 
 while not done:
 
