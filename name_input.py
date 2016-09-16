@@ -40,6 +40,7 @@ while not done:
             done = True
         elif event.type == pygame.JOYAXISMOTION:
             if joy1.get_axis(1) < 0:
+                time.timeout(1)
                 if n != 19:
                     n += 1
                     screen.fill(WHITE)
@@ -50,23 +51,25 @@ while not done:
                     screen.fill(WHITE)
                     label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
                     screen.blit(label, (100, 100))
-            if n != -1:
-                n -= 1
-                screen.fill(WHITE)
-                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                screen.blit(label, (100, 100))
-            else:
-                n =19
-                screen.fill(WHITE)
-                label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
-                screen.blit(label, (100, 100))
-        elif keys[K_SPACE]:
-            username.append(list[n])
-        elif keys[K_a]:
-            print("itt vagyok")
-            data = " ".join(i for i in username)
-            label = usual_font_2.render("User : {}".format(data), 1, (0, 0, 0))
-            screen.blit(label, (150, 150))
+            elif joy1.get_axis(1) > 0:
+                time.timeout(1)
+                if n != -1:
+                    n -= 1
+                    screen.fill(WHITE)
+                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                    screen.blit(label, (100, 100))
+                else:
+                    n =19
+                    screen.fill(WHITE)
+                    label = usual_font.render("User : {}".format(list[n]), 1, (0, 0, 0))
+                    screen.blit(label, (100, 100))
+            elif keys[K_SPACE]:
+                username.append(list[n])
+            elif keys[K_a]:
+                print("itt vagyok")
+                data = " ".join(i for i in username)
+                label = usual_font_2.render("User : {}".format(data), 1, (0, 0, 0))
+                screen.blit(label, (150, 150))
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
