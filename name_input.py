@@ -78,5 +78,3 @@ def name_input():
 
     # Close the window and quit.
     pygame.quit()
-
-name_input()
