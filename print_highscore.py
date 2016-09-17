@@ -43,7 +43,3 @@ def print_highscore():
         clock.tick(60)
 
     pygame.quit()
-
-print_highscore()
-time.sleep(3)
-menu.menu()

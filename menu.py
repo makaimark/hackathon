@@ -2,6 +2,7 @@ import pygame
 import main
 import time
 import name_input
+import print_highscore
 
 class Option:
     hovered = False
@@ -80,7 +81,7 @@ while True:
                 if new_game.hovered == True:
                    name_input.name_input()
                 if highscrore.hovered == True:
-                    pass
+                    print_highscore.print_highscore()
             elif event.key == pygame.K_ESCAPE:
                     exit()
 
