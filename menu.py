@@ -1,8 +1,6 @@
 import pygame
 import main
 import time
-import sys
-import name_input
 
 class Option:
     hovered = False
@@ -44,27 +42,28 @@ usual_font = pygame.font.Font("font/PressStart2P.ttf", 10)
 
 
 label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
-try:
-    labe_2 = usual_font.render("User : {}".format(sys.argv[1]),1, (255,255,0) )
-except:
-    labe_2 = usual_font.render("User : None",1, (255,255,0) )
 
 options = [new_game, highscrore]
+new_game == True
+pygame.joystick.init()
+joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+for joy in joysticks:
+    joy.init()
+joy1 = joysticks[0]
 
 while True:
     pygame.event.pump()
     screen.fill((0, 0, 0))
     events = pygame.event.get()
     screen.blit(label, (0, 10))
-    screen.blit(labe_2, (0, 290))
 
     for option in options:
         option.draw()
 
     for event in events:
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+        if event.type == pygame.JOYBUTTONDOWN:
+            if joy1.get_button(10) == 1 or joy1.get_button(11) == 1:
                 if new_game.hovered == True and highscrore.hovered == False:
                     new_game.hovered = False
                     highscrore.hovered = True
@@ -76,9 +75,9 @@ while True:
                 elif new_game.hovered == False and highscrore.hovered == False:
                     new_game.hovered = True
                     time.sleep(0.2)
-            elif event.key == pygame.K_SPACE:
+            elif joy1.get_button(0) == 1:
                 if new_game.hovered == True:
-                   name_input.name_input()
+                   main.main()
                 if highscrore.hovered == True:
                     pass
             elif event.key == pygame.K_ESCAPE:
