@@ -24,4 +24,8 @@ class Highscore():
             lines = file.readlines()
         table = [element.replace("\n", "").split(";") for element in lines]
         result = [i for i in lines]
-        print(table)
+        return result
+
+# dani = Highscore("danika", 100000)
+# dani.generate_date()
+# dani.print_score_to_csv("highscore/highscore.csv")

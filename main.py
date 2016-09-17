@@ -117,7 +117,6 @@ def main(username):
 
 
 
-
         # If you want a background image, replace this clear with blit'ing the
         # background image.
         screen.fill(BLACK)
