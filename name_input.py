@@ -40,7 +40,7 @@ def name_input():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-            elif event.type == pygame.JOYBUTTON:
+            elif event.type == pygame.JOYBUTTONDOWN:
                 if joy1.get_button(10) == 1:
                     if n != 19:
                         n += 1
