@@ -3,7 +3,7 @@ import spaceship
 import bullet
 import datetime
 import random
-import menu
+import sys
 from enemy import Enemy
 import time
 
@@ -114,7 +114,7 @@ def main(username):
                         bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
                         bullet_list.append(bullet_1)
                 if joy1.get_button(3) == 1:
-                    menu.menu()
+                    sys.exit()
 
 
 
@@ -167,6 +167,6 @@ def main(username):
 
     # Close the window and quit.
     pygame.quit()
-
+#
 if __name__ == "__main__":
     main()
