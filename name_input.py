@@ -69,7 +69,7 @@ def name_input():
                     screen.blit(label, (250, 250))
                 elif joy1.get_button(1) == 1:
                     data = " ".join(i for i in username)
-                    main.main(data)
+                    main(data)
         # --- Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 
