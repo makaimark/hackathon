@@ -32,13 +32,13 @@ class Option:
 
 pygame.init()
 screen = pygame.display.set_mode((600, 300))
-menu_font = pygame.font.Font("font/PressStart2P.ttf", 40)
+menu_font = pygame.font.Font("font/PressStart2P.ttf", 140)
 string_font = pygame.font.Font(None, 10)
 pygame.font.init()
 
-new_game = Option("NEW GAME", (140, 105))
-highscrore = Option("HIGHSCORE", (135, 155))
-usual_font = pygame.font.Font("font/PressStart2P.ttf", 10)
+new_game = Option("NEW GAME", (110, 155))
+highscrore = Option("HIGHSCORE", (20, 380))
+usual_font = pygame.font.Font("font/PressStart2P.ttf", 30)
 
 
 label = usual_font.render("Press ESC if you want to QUIT !", 1, (255,255,0))
