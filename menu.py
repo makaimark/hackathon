@@ -83,7 +83,6 @@ while True:
                 if highscrore.hovered == True:
                     #print_highscore.print_highscore()
                     pass
-            elif event.key == pygame.K_ESCAPE:
-                    exit()
+            
 
     pygame.display.update()
