@@ -40,7 +40,7 @@ def name_input():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-            elif event.type == pygame.JOYBUTTON:
+            elif event.type == pygame.JOYBUTTONDOWN:
                 if joy1.get_button(10) == 1:
                     if n != 19:
                         n += 1
@@ -65,7 +65,7 @@ def name_input():
                     screen.blit(label, (100, 100))
             elif joy1.get_button(0) == 1:
                 username.append(list[n])
-                label = usual_font_2.render("User : {}".format(data), 1, (0, 0, 0))
+                label = usual_font_2.render("User : {}".format(username), 1, (0, 0, 0))
                 screen.blit(label, (150, 150))
             elif joy1.get_button(1) == 1:
                 data = " ".join(i for i in username)
