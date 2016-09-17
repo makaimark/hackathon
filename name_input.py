@@ -65,7 +65,7 @@ def name_input():
                     screen.blit(label, (100, 100))
             elif joy1.get_button(0) == 1:
                 username.append(list[n])
-                label = usual_font_2.render("User : {}".format(data), 1, (0, 0, 0))
+                label = usual_font_2.render("User : {}".format(username), 1, (0, 0, 0))
                 screen.blit(label, (150, 150))
             elif joy1.get_button(1) == 1:
                 data = " ".join(i for i in username)
