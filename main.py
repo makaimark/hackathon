@@ -5,6 +5,7 @@ import datetime
 import random
 import menu
 from enemy import Enemy
+import time
 
 
 def number_of_lifes(screen, ship):
@@ -126,6 +127,11 @@ def main(username):
 
         screen.blit(ship.image, shiprect)
         screen.blit(number_of_lifes(screen, ship), (0,0))
+
+        if ship.life == 0:
+            time.sleep(5)
+            exit()
+
         for bull in bullet_list:
             if bull.x_coordinate > 1260:
                 bullet_list.remove(bull)
