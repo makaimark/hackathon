@@ -3,6 +3,7 @@ import spaceship
 import bullet
 import datetime
 import random
+import menu
 from enemy import Enemy
 
 
@@ -111,7 +112,8 @@ def main(username):
                         bullet_1 = bullet.Bullet(pygame.image.load("Green_laser.png"),  shiprect.midright[0], shiprect.midright[1])
                         bulletrect = (bullet_1.x_coordinate, bullet_1.y_coordinate -5)
                         bullet_list.append(bullet_1)
-
+                if joy1.get_button(3) == 1:
+                    menu.menu()
 
 
 
