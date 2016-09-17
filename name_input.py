@@ -66,7 +66,7 @@ def name_input():
             elif joy1.get_button(0) == 1:
                 username.append(list[n])
                 label = usual_font_2.render("User : {}".format(username), 1, (0, 0, 0))
-                screen.blit(label, (150, 150))
+                screen.blit(label, (250, 250))
             elif joy1.get_button(1) == 1:
                 data = " ".join(i for i in username)
                 main.main(data)
@@ -78,3 +78,5 @@ def name_input():
 
     # Close the window and quit.
     pygame.quit()
+
+name_input()
