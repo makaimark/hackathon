@@ -1,6 +1,5 @@
 import pygame
-import time
-from pygame import K_UP, K_DOWN, K_SPACE, K_a
+
 import main
 
 # Define some colors

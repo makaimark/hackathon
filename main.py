@@ -161,6 +161,6 @@ def main(username):
 
     # Close the window and quit.
     pygame.quit()
-
-if __name__ == "__main__":
-    main()
+#
+# if __name__ == "__main__":
+#     main()
