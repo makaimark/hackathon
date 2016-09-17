@@ -1,6 +1,7 @@
 import pygame
 import main
 import time
+import name_input
 
 class Option:
     hovered = False
@@ -31,7 +32,7 @@ class Option:
 
 
 pygame.init()
-screen = pygame.display.set_mode((600, 300))
+screen = pygame.display.set_mode((1280, 1024))
 menu_font = pygame.font.Font("font/PressStart2P.ttf", 140)
 string_font = pygame.font.Font(None, 10)
 pygame.font.init()
@@ -77,7 +78,7 @@ while True:
                     time.sleep(0.2)
             elif joy1.get_button(0) == 1:
                 if new_game.hovered == True:
-                   main.main()
+                   name_input.name_input()
                 if highscrore.hovered == True:
                     pass
             elif event.key == pygame.K_ESCAPE:
